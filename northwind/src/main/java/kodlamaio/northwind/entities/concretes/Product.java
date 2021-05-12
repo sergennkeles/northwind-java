@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data //lombakdan geliyor. Bizim için getter ve setterları otomatik oluşturuyor.
 @Entity //çıplak class kalmasın mantığı. Bu annotation ile class'ın referansını tutuyoruz. C sharptaki IEntity gibi
 @Table(name="products") // Product nesnemizin veritabanındaki hangi tabloya karşılıl geldiğini belirtiyoruz.
-
+@NoArgsConstructor //Parametresiz Constructor üretir.
+@AllArgsConstructor //Sınıfın Constructorını üretir.Bu Constructor sınıftaki tüm fieldleri parametre olarak almıştır.
 public class Product {
 
 	
