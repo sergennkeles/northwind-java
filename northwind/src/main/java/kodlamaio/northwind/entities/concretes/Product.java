@@ -3,6 +3,7 @@ package kodlamaio.northwind.entities.concretes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,7 +20,7 @@ public class Product {
 
 	
 	@Id // Bu annotation ile de product nesnemizdeki Id alanın hangisi olduğunu belirtiyoruz. Veritabanı işlemlerini bu annotation ile belirtilen alana göre yapıyoruz
-	@GeneratedValue // Bu annotation ile Id alanını birer birer otomatik artacağını belirtiyoruz. C sharp tarafında daha doğrusu Sql server da identity özelliğine denk geliyor.
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Bu annotation ile Id alanını birer birer otomatik artacağını belirtiyoruz. C sharp tarafında daha doğrusu Sql server da identity özelliğine denk geliyor.
 	@Column(name = "product_id") // Bu annotation ile product nesnemizdeki alanlar ile tablomuzdaki alanları eşleştiriyoruz.
 	private int id;				// burada eşleştirme yaparken büyük-küçük harfe dikkat ediyoruz.
 	
