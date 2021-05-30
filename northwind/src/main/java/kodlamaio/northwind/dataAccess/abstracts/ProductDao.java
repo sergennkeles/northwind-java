@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductDao extends JpaRepository<Product, Integer>{
 
@@ -34,4 +35,7 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
 	// bu annotation ile sql sorgusunu (jpql) kendimiz de yazabiliriz. : işaretinden sonra gelen productName parametreden gelen productNamedir. Yani burada sorguyu parametreden gelen productName'e göre yap demek.
 	List<Product> getByNameAndCategory_CategoryId(String productName,int categoryId);
 	
+	@Query("Select new kodlamaio.northwind.entities.dtos.ProductWithCategoryDto(p.id,p.productName,c.categoryName) "
+			+ "From  Category c  Inner Join c.products  p")
+	List<ProductWithCategoryDto> getProductWithCategoryDetails();
 }

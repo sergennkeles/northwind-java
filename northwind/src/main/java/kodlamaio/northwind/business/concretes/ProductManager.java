@@ -17,6 +17,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service // Bu annotation ile ProductManager classımızın service göre göreceğini belirtiyoruz.
 public class ProductManager implements ProductService {
@@ -111,6 +112,14 @@ public class ProductManager implements ProductService {
 		
 		Sort sort=Sort.by(Sort.Direction.ASC,"productName");
 		return new SuccessDataResult<List<Product>>(productDao.findAll(sort),"A-Z sıralandı.");
+	}
+
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(productDao.getProductWithCategoryDetails(),"dto ile data listelendi.");
+		
 	}
 
 }

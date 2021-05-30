@@ -14,6 +14,7 @@ import kodlamaio.northwind.business.abstracts.ProductService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @RestController // Bu annotation ile ProductsController classımızın controller olduğunu belirttik.
 @RequestMapping("api/products") // Bu annotation ile dış dünyadan istekte bulunulduğunda ProductsController'ın  cevap vereceğini belirttik.
@@ -91,5 +92,11 @@ public class ProductsController {
 	public  DataResult <List<Product>> getAllSorted()
 	{
 		return this.productService.getAllSorted(); // index 0 dan başladığı için pageNo-1 yaptık.
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails") 
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails()
+	{
+		return productService.getProductWithCategoryDetails();
 	}
 }
