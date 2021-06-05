@@ -16,6 +16,7 @@ public class Result {
 	
 	public boolean isSuccess() {
 		return this.success;
+	
 	}
 	
 	public String getMessage() {

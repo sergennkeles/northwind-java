@@ -16,6 +16,7 @@ public class DataResult<TEntity> extends Result {
 
 	public TEntity getData() {
 		return this.data;
+	
 	}
 
 }
